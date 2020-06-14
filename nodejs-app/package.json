@@ -1,0 +1,21 @@
+{
+  "name": "sample-app",
+  "version": "1.0.0",
+  "description": "A sample for docker demo",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Karthik Kumar J",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.12.1",
+    "koa-router": "^9.0.1",
+    "nodemon": "^2.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/karthikkumar1996/docker-demos.git"
+  }
+}
