@@ -1,0 +1,27 @@
+{
+  "name": "visits",
+  "version": "1.0.0",
+  "description": "Demo for multi-container with Node and Redis",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "redis": "^3.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthikkumar1996/docker-demos.git"
+  },
+  "keywords": [
+    "Docker"
+  ],
+  "author": "Karthik Kumar J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karthikkumar1996/docker-demos/issues"
+  },
+  "homepage": "https://github.com/karthikkumar1996/docker-demos#readme"
+}
