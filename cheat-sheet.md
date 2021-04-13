@@ -28,6 +28,10 @@
 1. Execute command
     - `docker exec –it <container-id> [commands]` - this can be used to execute commands within the container.
     - `docker exec –it <container-id> sh` – this gives us access to the unix environment within the container. This is very useful for debugging and executing commands directly
+1. Run a docker with additional commands
+    - `docker run <container-id> npm run test`
+1. Run another command using already running container
+    - `docker exec -it <container-id> npm run test`
 
 1. DockerFile
     - `docker build .`
