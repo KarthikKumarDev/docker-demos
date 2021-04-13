@@ -34,6 +34,8 @@
 	> Build the DockerFile present in the directory
     - `docker  build -t <docker-name>:<tag> .`
 	> Build a DockerFile and provide a User friendly name to use it
+    - Build Dockerfile with special names. Like "Dockerfile.dev"
+    > `docker buil -f Dockerfile.dev .`
 
 1. Docker Compose
     - Orchestrate multiple containers
