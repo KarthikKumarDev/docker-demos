@@ -22,8 +22,14 @@ class Fibonacci extends Component {
   };
 
   fetchValues = async () => {
-    const values = await axios.get("/api/values/current");
-    this.setState({ values: values.data });
+    const responseValues = await axios.get("/api/values/current");
+    if (responseValues.data) {
+      let values = [];
+      Object.keys(responseValues.data).forEach((item) => {
+        values.push({ key: item, value: responseValues.data[item] });
+      });
+      this.setState({ values: values });
+    }
   };
 
   handleSubmit = async (event) => {
@@ -50,10 +56,10 @@ class Fibonacci extends Component {
         <h3>Indexes I have seen:</h3>
         {this.state.seenIndexes.map(({ number }) => number).join(", ")}
         <h3>Calculated Values:</h3>
-        {this.state.values.map((value, index) => {
+        {this.state.values.map((item) => {
           return (
-            <div key={value}>
-              For index {index} I calculated {value}
+            <div key={item.key}>
+              For index {item.key} I calculated {item.value}
             </div>
           );
         })}
