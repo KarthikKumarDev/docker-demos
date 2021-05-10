@@ -18,7 +18,7 @@ const generateFibonacci = (index) => {
 };
 
 subscription.on("message", (channel, message) => {
-  redisClient.hset("values", message, fib(parseInt(message)));
+  redisClient.hset("values", message, generateFibonacci(parseInt(message)));
 });
 
 subscription.subscribe("insert");
