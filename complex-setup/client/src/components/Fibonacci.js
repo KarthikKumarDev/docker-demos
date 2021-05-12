@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {
+  FlippingCard,
+  FlippingCardBack,
+  FlippingCardFront,
+} from "react-ui-cards";
+
+import "./Fibonacci.css";
 
 class Fibonacci extends Component {
   constructor(props) {
@@ -44,7 +51,7 @@ class Fibonacci extends Component {
 
   render() {
     return (
-      <div>
+      <div className="fibonacci">
         <form onSubmit={this.handleSubmit}>
           <label>Enter your index:</label>
           <input
@@ -53,16 +60,32 @@ class Fibonacci extends Component {
           />
           <button>Submit</button>
         </form>
-        <h3>Indexes I have seen:</h3>
-        {this.state.seenIndexes.map(({ number }) => number).join(", ")}
-        <h3>Calculated Values:</h3>
-        {this.state.values.map((item) => {
-          return (
-            <div key={item.key}>
-              For index {item.key} I calculated {item.value}
-            </div>
-          );
-        })}
+        <div className="results">
+          <FlippingCard>
+            <FlippingCardBack>
+              Content that will be displayed on the back of the card
+            </FlippingCardBack>
+            <FlippingCardFront>
+              <h3>Indexes I have seen:</h3>
+              {this.state.seenIndexes.map(({ number }) => number).join(", ")}
+            </FlippingCardFront>
+          </FlippingCard>
+          <FlippingCard>
+            <FlippingCardBack>
+              Content that will be displayed on the back of the card
+            </FlippingCardBack>
+            <FlippingCardFront>
+              <h3>Calculated Values:</h3>
+              {this.state.values.map((item) => {
+                return (
+                  <div key={item.key}>
+                    For index {item.key} I calculated {item.value}
+                  </div>
+                );
+              })}
+            </FlippingCardFront>
+          </FlippingCard>
+        </div>
       </div>
     );
   }
