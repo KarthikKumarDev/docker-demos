@@ -34,19 +34,19 @@
     - `docker exec -it <container-id> npm run test`
 
 1. DockerFile
-    - `docker build .`
-	> Build the DockerFile present in the directory
-    - `docker  build -t <docker-name>:<tag> .`
-	> Build a DockerFile and provide a User friendly name to use it
+	- Build the DockerFile present in the directory
+        - `docker build .`
+	- Build a DockerFile and provide a User friendly name to use it
+        - `docker  build -t <docker-name>:<tag> .`
     - Build Dockerfile with special names. Like "Dockerfile.dev"
-    > `docker buil -f Dockerfile.dev .`
+        - `docker buil -f Dockerfile.dev .`
 
 1. Docker Compose
     - Orchestrate multiple containers
     - Enable networking between multiple containers
     - Process a docker-compose.yml file
-	> `docker -compose up`
+	    - `docker-compose up`
     - Process a docker-compose.yml file and rebuild the build containers 
-	> `docker-compose up --build`
+	    - `docker-compose up --build`
     -  To bring down the containers created by the docker compose
-	> `docker-compose down`
+	    - `docker-compose down`
