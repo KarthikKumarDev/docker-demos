@@ -9,6 +9,7 @@ import {
 import "./Fibonacci.css";
 
 class Fibonacci extends Component {
+  timeInteval;
   constructor(props) {
     super(props);
     this.state = {
@@ -19,8 +20,14 @@ class Fibonacci extends Component {
   }
 
   componentDidMount = () => {
-    this.fetchValues();
-    this.fetchIndexes();
+    this.fetchLatestValues();
+    this.timeInteval = setInterval(()=> {
+      this.fetchLatestValues();
+    }, 10000);
+  };
+
+  componentWillUnmount = () => {
+    clearInterval(this.timeInteval);
   };
 
   fetchIndexes = async () => {
@@ -39,6 +46,11 @@ class Fibonacci extends Component {
     }
   };
 
+  fetchLatestValues = () => {
+    this.fetchValues();
+    this.fetchIndexes();
+  };
+
   handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -52,18 +64,22 @@ class Fibonacci extends Component {
   render() {
     return (
       <div className="fibonacci">
-        <form onSubmit={this.handleSubmit}>
-          <label>Enter your index:</label>
-          <input
-            value={this.state.index}
-            onChange={(event) => this.setState({ index: event.target.value })}
-          />
-          <button>Submit</button>
-        </form>
+        <div className="form">
+          <form onSubmit={this.handleSubmit}>
+            <label>Enter your index:</label>
+            <input
+              value={this.state.index}
+              onChange={(event) => this.setState({ index: event.target.value })}
+            />
+            <button>Submit</button>
+          </form>
+          <button onClick={() => this.fetchLatestValues()}>Refresh</button>
+        </div>
+
         <div className="results">
           <FlippingCard>
             <FlippingCardBack>
-              Content that will be displayed on the back of the card
+              This data comes from a Postgres DB
             </FlippingCardBack>
             <FlippingCardFront>
               <h3>Indexes I have seen:</h3>
@@ -71,16 +87,14 @@ class Fibonacci extends Component {
             </FlippingCardFront>
           </FlippingCard>
           <FlippingCard>
-            <FlippingCardBack>
-              Content that will be displayed on the back of the card
-            </FlippingCardBack>
+            <FlippingCardBack>This data comes from a Redis DB</FlippingCardBack>
             <FlippingCardFront>
               <h3>Calculated Values:</h3>
               {this.state.values.map((item) => {
                 return (
-                  <div key={item.key}>
-                    For index {item.key} I calculated {item.value}
-                  </div>
+                  !isNaN(item.value) && <div key={item.key}>
+                  For index {item.key} I calculated {item.value}
+                </div>
                 );
               })}
             </FlippingCardFront>

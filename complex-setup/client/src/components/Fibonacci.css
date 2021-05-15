@@ -6,13 +6,23 @@
   align-items: center;
 }
 
+.fibonacci > .form{
+  display: flex;
+}
+
+.form > button {
+  margin-left: 5px;
+}
+
 .results{
   width: 50%;
   min-width: 500px;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .results > div{
   margin-top: 20px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
