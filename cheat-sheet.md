@@ -39,7 +39,7 @@
 	- Build a DockerFile and provide a User friendly name to use it
         - `docker  build -t <docker-name>:<tag> .`
     - Build Dockerfile with special names. Like "Dockerfile.dev"
-        - `docker buil -f Dockerfile.dev .`
+        - `docker build -f Dockerfile.dev .`
 
 1. Docker Compose
     - Orchestrate multiple containers
